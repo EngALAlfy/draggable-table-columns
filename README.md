@@ -51,7 +51,7 @@ $(document).ready(function() {
 ## 📖 Documentation
 
 - [Full README](./README.md)
-- [Live Demo](https://islamalalfy.github.io/draggable-table-columns/demo.html)
+- [Live Demo](https://engalalfy.github.io/draggable-table-columns/demo.html)
 - [Configuration Options](#configuration-options)
 
 ## Configuration Options
