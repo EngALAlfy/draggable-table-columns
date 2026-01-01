@@ -20,6 +20,7 @@ A lightweight jQuery plugin that enables drag-and-drop functionality to reorder 
 ### Option 1: Direct Include
 
 ```html
+<link href="path/to/draggable-table-columns.css" rel="stylesheet">
 <script src="path/to/dragndrop.table.columns.js"></script>
 ```
 
@@ -33,8 +34,9 @@ npm install draggable-table-columns
 
 ### Basic Setup
 
-1. **Add the script to your page:**
+1. **Add the stylesheet and script to your page:**
 ```html
+<link href="draggable-table-columns.css" rel="stylesheet">
 <script src="dragndrop.table.columns.js"></script>
 ```
 
@@ -103,7 +105,7 @@ $('#my-table').draggableTableColumns({
 
 ## CSS Customization
 
-The plugin comes with default styles, but you can customize them:
+The plugin comes with a complete stylesheet (`draggable-table-columns.css`). You can customize it by overriding the CSS classes:
 
 ```css
 /* Draggable column styling */
@@ -206,6 +208,19 @@ The plugin triggers standard drag events on the table:
 - `drop` - When dropping on a target
 - `dragend` - When drag operation completes
 
+## CSS Classes
+
+### Core Classes
+- `.draggable-column` - Applied to columns that can be dragged
+- `.dragging` - Applied to column being dragged
+- `.drag-over` - Applied to drop target column
+
+### Utility Classes
+- `.non-draggable-column` - Mark columns as non-draggable
+- `.badge-draggable` - Badge to indicate draggable column
+- `.fixed-column` - Fixed width column
+- `.flexible-column` - Flexible width column
+
 ## Limitations
 
 - Requires jQuery library
@@ -219,6 +234,7 @@ The plugin triggers standard drag events on the table:
 - Ensure the `draggable-column` class is added to column headers
 - Check that jQuery is loaded before the plugin script
 - Verify the table ID matches your selector
+- Ensure the CSS file is included
 
 ### Column order not saving?
 - Check browser localStorage is enabled
@@ -226,7 +242,7 @@ The plugin triggers standard drag events on the table:
 - Check browser console for JavaScript errors
 
 ### Styles not applying?
-- Ensure CSS is loaded after the plugin initialization
+- Ensure CSS file is loaded after the plugin script
 - Check for CSS conflicts with existing styles
 - Verify class names match your CSS
 
@@ -257,12 +273,23 @@ See LICENSE file for full details.
 - Website: [alalfy.com](https://alalfy.com)
 - GitHub: [@islamalalfy](https://github.com/islamalalfy)
 
+## Files Included
+
+- `dragndrop.table.columns.js` - Main plugin file
+- `draggable-table-columns.css` - Styling and animations
+- `demo.html` - Interactive demo
+- `package.json` - NPM package configuration
+- `README.md` - Documentation
+- `LICENSE` - MIT License
+
 ## Changelog
 
 ### v1.0.0 (Initial Release)
 - Initial release with basic drag and drop functionality
 - localStorage persistence
 - CSS class-based configuration
+- Complete CSS styling with animations
+- Interactive demo page
 
 ## Support
 
