@@ -151,7 +151,7 @@
     function saveColumnOrder(table) {
         const columnOrder = [];
         table.find('thead th.draggable-column').each(function() {
-            columnOrder.push($(this).data('shift-id') || $(this).text().trim());
+            columnOrder.push($(this).text().trim());
         });
 
         if (typeof(Storage) !== 'undefined') {
