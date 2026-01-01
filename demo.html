@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draggable Table Columns - Demo</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .demo-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+
+        .table th {
+            background-color: rgb(9, 103, 158);
+            color: white;
+            cursor: pointer;
+        }
+
+        .table th.draggable-column {
+            cursor: grab;
+            transition: all 0.2s ease;
+        }
+
+        .table th.draggable-column:active {
+            cursor: grabbing;
+        }
+
+        .table th.dragging {
+            opacity: 0.5 !important;
+            background-color: rgba(9, 103, 158, 0.6) !important;
+        }
+
+        .table th.drag-over {
+            background-color: rgba(9, 103, 158, 0.9) !important;
+            box-shadow: inset 0 -3px 0 0 #fff;
+            border-left: 3px solid #fff;
+        }
+
+        .badge-draggable {
+            display: inline-block;
+            padding: 4px 12px;
+            background-color: #28a745;
+            color: white;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-left: 5px;
+        }
+
+        .instructions {
+            background-color: #e7f3ff;
+            border-left: 4px solid rgb(9, 103, 158);
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
+        .code-block {
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 10px;
+            overflow-x: auto;
+        }
+
+        code {
+            color: #d63384;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 Draggable Table Columns Demo</h1>
+        <p class="subtitle">Drag and drop table columns to reorder them. Order is saved to your browser!</p>
+
+        <div class="instructions">
+            <strong>📌 How to use:</strong>
+            <ul style="margin-bottom: 0; margin-top: 10px;">
+                <li>Hover over column headers with <span class="badge-draggable">draggable</span> badge</li>
+                <li>Click and drag to reorder columns</li>
+                <li>Drop on target column to swap positions</li>
+                <li>Your order is automatically saved</li>
+                <li>Refresh the page - your order is preserved!</li>
+            </ul>
+        </div>
+
+        <div class="demo-container">
+            <h3>Demo Table</h3>
+            <table class="table table-striped" id="demo-table">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th class="draggable-column">First Name <span class="badge-draggable">draggable</span></th>
+                        <th class="draggable-column">Last Name <span class="badge-draggable">draggable</span></th>
+                        <th class="draggable-column">Department <span class="badge-draggable">draggable</span></th>
+                        <th class="draggable-column">Position <span class="badge-draggable">draggable</span></th>
+                        <th>Email</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>John</td>
+                        <td>Doe</td>
+                        <td>Engineering</td>
+                        <td>Senior Developer</td>
+                        <td>john@example.com</td>
+                        <td><span class="badge bg-success">Active</span></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Jane</td>
+                        <td>Smith</td>
+                        <td>Product</td>
+                        <td>Product Manager</td>
+                        <td>jane@example.com</td>
+                        <td><span class="badge bg-success">Active</span></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Bob</td>
+                        <td>Johnson</td>
+                        <td>Sales</td>
+                        <td>Sales Director</td>
+                        <td>bob@example.com</td>
+                        <td><span class="badge bg-warning">Inactive</span></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Alice</td>
+                        <td>Williams</td>
+                        <td>Marketing</td>
+                        <td>Marketing Lead</td>
+                        <td>alice@example.com</td>
+                        <td><span class="badge bg-success">Active</span></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Charlie</td>
+                        <td>Brown</td>
+                        <td>Engineering</td>
+                        <td>Junior Developer</td>
+                        <td>charlie@example.com</td>
+                        <td><span class="badge bg-success">Active</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="demo-container">
+            <h3>How to Implement</h3>
+
+            <h5>1. Include jQuery and the Plugin</h5>
+            <div class="code-block">
+<pre><code>&lt;script src="https://code.jquery.com/jquery-3.6.0.min.js"&gt;&lt;/script&gt;
+&lt;script src="dragndrop.table.columns.js"&gt;&lt;/script&gt;</code></pre>
+            </div>
+
+            <h5>2. Add Classes to Your Table</h5>
+            <div class="code-block">
+<pre><code>&lt;table id="my-table"&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;ID&lt;/th&gt;
+      &lt;th class="draggable-column"&gt;Name&lt;/th&gt;
+      &lt;th class="draggable-column"&gt;Department&lt;/th&gt;
+      &lt;th&gt;Status&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;!-- rows --&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+            </div>
+
+            <h5>3. Initialize the Plugin</h5>
+            <div class="code-block">
+<pre><code>$(document).ready(function() {
+  $('#my-table').draggableTableColumns({
+    storageKey: 'myTableOrder'
+  });
+});</code></pre>
+            </div>
+        </div>
+
+        <div class="demo-container">
+            <h3>Configuration Options</h3>
+            <div class="code-block">
+<pre><code>$('#my-table').draggableTableColumns({
+  dragClass: 'dragging',           // CSS class while dragging
+  dragOverClass: 'drag-over',      // CSS class for drop target
+  storageKey: 'tableColumnOrder',  // localStorage key
+  draggableSelector: '.draggable-column'  // Selector for draggable columns
+});</code></pre>
+            </div>
+        </div>
+
+        <div class="demo-container">
+            <h3>Features</h3>
+            <ul>
+                <li>✅ Lightweight - no external dependencies beyond jQuery</li>
+                <li>✅ Easy to use - just add a class to columns</li>
+                <li>✅ Persistent - saves order to localStorage</li>
+                <li>✅ Visual feedback - smooth animations</li>
+                <li>✅ Flexible - control which columns are draggable</li>
+                <li>✅ Browser compatible - works on all modern browsers</li>
+            </ul>
+        </div>
+
+        <div class="demo-container">
+            <h3>Author</h3>
+            <p><strong>Islam H Alalfy</strong></p>
+            <p>Website: <a href="https://alalfy.com" target="_blank">alalfy.com</a></p>
+            <p>GitHub: <a href="https://github.com/islamalalfy" target="_blank">@islamalalfy</a></p>
+            <p><strong>License:</strong> MIT - Free to use and modify</p>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="dragndrop.table.columns.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Initialize the demo table
+            $('#demo-table').draggableTableColumns({
+                storageKey: 'demoTableOrder'
+            });
+        });
+    </script>
+</body>
+</html>
+
