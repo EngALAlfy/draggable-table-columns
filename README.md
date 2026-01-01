@@ -94,18 +94,15 @@ Column order is automatically saved to localStorage using the `storageKey` optio
 - `README.md` - Full documentation
 - `LICENSE` - MIT License
 
-## 🔧 Integration Examples
+## 🔧 Integration Example
 
-### Laravel Livewire
-
-```blade
+```html
 <table class="table" id="my-table">
   <thead>
     <tr>
       <th>ID</th>
-      @foreach($items as $item)
-        <th class="draggable-column">{{ $item->name }}</th>
-      @endforeach
+      <th class="draggable-column">Name 1</th>
+      <th class="draggable-column">Name 2</th>
     </tr>
   </thead>
   <tbody>
@@ -113,8 +110,7 @@ Column order is automatically saved to localStorage using the `storageKey` optio
   </tbody>
 </table>
 
-@push("scripts")
-  <script src="{{ asset('/plugins/drag/dragndrop.table.columns.js') }}"></script>
+  <script src="dragndrop.table.columns.js"></script>
   <script>
     $(document).ready(function() {
       $('#my-table').draggableTableColumns({
@@ -122,13 +118,7 @@ Column order is automatically saved to localStorage using the `storageKey` optio
       });
     });
   </script>
-@endpush
 ```
-
-### React / Vue
-
-Include the script files in your HTML template and initialize on component mount.
-
 ## 📝 License
 
 MIT License - You are free to use, modify, and distribute this plugin. See [LICENSE](./LICENSE) file for full details.
@@ -137,7 +127,7 @@ MIT License - You are free to use, modify, and distribute this plugin. See [LICE
 
 **Islam H Alalfy**
 - Website: [alalfy.com](https://alalfy.com)
-- GitHub: [@islamalalfy](https://github.com/islamalalfy)
+- GitHub: [@islamalalfy](https://github.com/engalalfy)
 
 ## 🤝 Contributing
 
@@ -151,7 +141,6 @@ Contributions are welcome! Please feel free to submit pull requests or open issu
 - CSS class-based configuration
 - Complete CSS styling with animations
 - Interactive demo page
-- Livewire integration support
 
 ---
 
